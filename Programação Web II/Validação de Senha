@@ -1,0 +1,15 @@
+<?php
+echo("---Vamos criar o seu login---\n");
+echo("Crie a sua senha: ");
+    $senha = Readline();
+        do {
+            echo("Digite a sua senha: ");
+            $testesenha = readline();
+                if ($senha != $testesenha)
+                {
+                echo("Senha incorreta, tente novamente!\n");
+                }   
+            }
+        while ($senha != $testesenha);
+            echo("Senha correta");
+?> 
