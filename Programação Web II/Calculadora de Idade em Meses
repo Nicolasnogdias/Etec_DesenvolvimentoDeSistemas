@@ -1,0 +1,26 @@
+<?php
+// Exibe uma mensagem de boas-vindas e orientações
+echo ("===Bem Vindo, vamos descobrir sua idade em meses===\n"); 
+
+// Solicita ao usuário que insira sua data de nascimento no formato dd/mm/aaaa
+echo ("Digite sua data de nascimento no formato dd/mm/aaaa: "); 
+$dataNasc = readline(); // Lê a entrada do usuário e armazena na variável $dataNasc
+
+// Cria um objeto DateTime a partir da data de nascimento fornecida, utilizando o formato dd/mm/aaaa
+$dataNascObj = DateTime::createFromFormat('d/m/Y', $dataNasc);
+$dataHoje = new DateTime(); // Cria um objeto DateTime representando a data e hora atuais
+
+function calcularidade($dataNasc, $dataHoje) { // Função para calcular a idade em meses
+// Calcula a diferença entre a data de nascimento e a data atual
+    $diferenca = $dataNasc->diff($dataHoje); 
+// Converte a diferença em anos para meses (anos * 12) e soma os meses
+    $idade = $diferenca->y * 12 + $diferenca->m; 
+// Retorna a idade calculada em meses
+    return $idade; 
+}
+// Chama a função calcularidade passando as datas e armazena o resultado na variável $idade
+$idade = calcularidade($dataNascObj, $dataHoje); 
+
+// Exibe a idade em meses
+echo("A sua idade em meses é: $idade"); 
+?>
