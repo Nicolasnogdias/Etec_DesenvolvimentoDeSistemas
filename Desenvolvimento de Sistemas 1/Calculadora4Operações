@@ -1,0 +1,44 @@
+using System;
+class calculadora {
+  static void Main() {
+    
+    Console.WriteLine("====Bem vindo a Calculadora====");
+    Console.WriteLine("Digite o primeiro valor");
+    double x = double.Parse(Console.ReadLine());
+    
+    Console.WriteLine("Digite o segundo valor");
+    double y = double.Parse(Console.ReadLine());
+    
+    Console.WriteLine("Digite a operação desejada:\n1 = adição\n2 = subtração\n3 = multiplicação\n4 = divisão");
+    int operador = int.Parse(Console.ReadLine());
+    
+    switch (operador){
+        case 1:
+            Console.WriteLine("Resultado: " + (x+y));
+            break;
+         
+         case 2:
+            Console.WriteLine("Resultado: " + (x-y));
+         break;
+         
+         case 3:
+            Console.WriteLine("Resultado: " + (x*y));
+            break;
+         
+         case 4:
+             if (y == 0) 
+                {
+                    Console.WriteLine("ERRO! Não é possível dividir por zero!");
+                }
+                else 
+                {
+                    Console.WriteLine("Resultado: " + (x / y));
+                }
+                break;
+        default:
+            Console.WriteLine("ERRO! Digite um dos operadores");
+            break;
+    }
+    
+  }
+}

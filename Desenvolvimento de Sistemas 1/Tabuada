@@ -1,0 +1,32 @@
+using System;
+class HelloWorld {
+static void Main() {
+    
+    Console.WriteLine("===Programa para exibir tabuada===\n");
+    string resposta;
+    
+    do {
+        Console.WriteLine("Digite o número que você deseja a tabuada: ");
+        int tabuada = int.Parse(Console.ReadLine());
+        int i;
+    Console.WriteLine($"Tabuada do número {tabuada}:");
+        for (i = 1; i <= 10; i++) {
+        
+        Console.WriteLine($"{tabuada} x {i} = {tabuada * i}");
+        }
+        Console.WriteLine("Digite o X para sair ou S para continuar");
+        resposta = Console.ReadLine().ToUpper();
+        
+            if (resposta =="X") {
+                Console.WriteLine("Você saiu, programa encerrado.");
+            }
+            else if( resposta == "S") {
+                Console.WriteLine("Você optou por continuar.");
+            }   
+            else {
+                Console.WriteLine("Digito inválido, programa encerrado.");
+            }
+        }
+    while (resposta == "S"); 
+    }
+}

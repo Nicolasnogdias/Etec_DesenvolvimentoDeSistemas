@@ -1,0 +1,72 @@
+using System;  // Importa o namespace System, que contém classes básicas como Console e outros
+using System.Collections.Generic;  // Importa o namespace que contém a classe List, usada para armazenar a lista de notas
+
+class Program 
+{
+    static void Main() 
+    {
+        int numEstudantes;  // Declara uma variável para armazenar o número de estudantes
+        
+        // Laço de repetição que garante que o número de estudantes seja maior que 0
+        do
+        {
+            Console.WriteLine("Digite o número de estudantes que deseja cadastrar: ");  // Exibe uma mensagem solicitando o número de estudantes
+            numEstudantes = int.Parse(Console.ReadLine());  // Lê o valor digitado pelo usuário e converte para um número inteiro
+            
+            // Verifica se o número de estudantes é menor ou igual a 0 e, em caso afirmativo, exibe uma mensagem de erro
+            if (numEstudantes <= 0)  
+            {
+                Console.WriteLine("Número inválido, deve-se cadastrar pelo menos 1 estudante");  // Exibe a mensagem de erro
+            }
+        }
+        while (numEstudantes <= 0);  // Continua pedindo o número de estudantes enquanto o valor for inválido (menor ou igual a 0)
+
+        string[] estudantes = new string[numEstudantes];  // Cria um array de strings para armazenar os nomes dos estudantes
+        List<double> notas = new List<double>();  // Cria uma lista para armazenar as notas dos estudantes
+
+        for (int i = 0; i < numEstudantes; i++) // Laço que percorre o número de estudantes e coleta o nome e a nota de cada um
+        {
+            Console.WriteLine($"Digite o nome do estudante {i + 1}: ");  // Exibe uma mensagem pedindo o nome do estudante
+            estudantes[i] = Console.ReadLine();  // Lê o nome do estudante e armazena no array "estudantes"
+
+            Console.WriteLine($"Digite a nota de {estudantes[i]}: ");  // Exibe uma mensagem pedindo a nota do estudante
+            double nota = double.Parse(Console.ReadLine());  // Lê a nota e converte para double
+            notas.Add(nota);  // Adiciona a nota na lista de notas
+        }
+
+        double somaNotas = 0;  // Variável para armazenar a soma das notas
+        double maiorNota = notas[0];  // Inicializa a variável maiorNota com a primeira nota da lista
+        double menorNota = notas[0];  // Inicializa a variável menorNota com a primeira nota da lista
+        string nomeMaiorNota = estudantes[0];  // Inicializa o nome do estudante com maior nota
+        string nomeMenorNota = estudantes[0];  // Inicializa o nome do estudante com menor nota
+
+        // Laço para percorrer as notas e calcular a soma, maior e menor nota
+        for (int i = 0; i < numEstudantes; i++) 
+        {
+            somaNotas += notas[i];  // Soma a nota do estudante à variável somaNotas
+
+            // Verifica se a nota do estudante é maior que a maior nota registrada até o momento
+            if (notas[i] > maiorNota)  
+            {
+                maiorNota = notas[i];  // Atualiza a maior nota
+                nomeMaiorNota = estudantes[i];  // Atualiza o nome do estudante com a maior nota
+            }
+
+            // Verifica se a nota do estudante é menor que a menor nota registrada até o momento
+            if (notas[i] < menorNota)  
+            {
+                menorNota = notas[i];  // Atualiza a menor nota
+                nomeMenorNota = estudantes[i];  // Atualiza o nome do estudante com a menor nota
+            }
+        }
+
+        double media = somaNotas / numEstudantes;  // Calcula a média das notas
+
+        // Exibe a média das notas, formatada com 2 casas decimais
+        Console.WriteLine($"\nMédia das notas: {media:F2}\n");  
+        // Exibe o nome e a nota do estudante com a maior nota
+        Console.WriteLine($"Estudante com a maior nota: {nomeMaiorNota} \nnota:{maiorNota}\n");
+        // Exibe o nome e a nota do estudante com a menor nota
+        Console.WriteLine($"Estudante com a menor nota: {nomeMenorNota}\nnota:{menorNota}");
+    }
+}

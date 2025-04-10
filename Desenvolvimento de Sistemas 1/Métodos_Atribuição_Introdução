@@ -1,0 +1,61 @@
+using System;
+class HelloWorld {
+static int SomarTresNumeros(int num1, int num2, int num3) 
+    {
+        return  (num1 + num2) + num3;
+    }
+static string Saudacao(string nome)
+    {
+        return "Olá, " + nome + ", seja muito bem vindo!";
+    } 
+static bool EhMultiploDeCinco(int numero)
+    { 
+        return numero % 5 == 0;
+    }
+        
+  static void Main() {
+Console.Write("Escolha uma atividade entre 1 e 3: ");     
+int escolha = int.Parse(Console.ReadLine());
+if ((escolha != 1) && (escolha != 2) && (escolha != 3))
+    {
+        Console.WriteLine("Número inválido");
+    }
+else 
+    {
+        switch (escolha)
+            {
+            case 1:
+                Console.WriteLine("---Bem vindo à atividade 1---\n Vamos realizar a soma de três números");
+                Console.WriteLine("Digite o primeiro número:");
+                int num1 = int.Parse(Console.ReadLine());
+                Console.WriteLine("Digite o segundo número:");
+                int num2 = int.Parse(Console.ReadLine());
+                Console.WriteLine("Digite o terceiro número:");
+                int num3 = int.Parse(Console.ReadLine());
+                int resultado = SomarTresNumeros(num1, num2, num3);
+                Console.WriteLine("O resultado da soma é: "+ resultado);
+            break;
+            case 2:
+                Console.WriteLine("---Bem vindo à atividade 2---");
+                Console.WriteLine("Digite o seu nome");
+                string nome = Console.ReadLine();
+                string mensagem = Saudacao(nome);
+                Console.WriteLine(mensagem);
+            break;
+            case 3:
+                Console.WriteLine("---Bem vindo à atividade 3---");
+                Console.WriteLine("Vamos descobrir se o número é múltiplo de 5!");
+                Console.WriteLine("Digite um número");
+                int numero = int.Parse(Console.ReadLine());
+                if (EhMultiploDeCinco(numero))
+                    {
+                        Console.WriteLine("É múltiplo de 5");
+                    }
+                else 
+                    { 
+                        Console.WriteLine("Não é múltiplo de 5");
+                    }
+            break;
+            }
+    }
+}}

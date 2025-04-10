@@ -1,0 +1,162 @@
+using System;
+class Hello {
+// Função principal onde a execução do programa começa
+static void Main() {
+// Exibe uma mensagem de boas-vindas ao usuário
+Console.WriteLine("---Bem vindo à consulta de carros da Wolkswagen---");
+    
+// Declara arrays com os tipos de carros e seus respectivos modelos
+string[] tipoCarro = {"Hatch", "Sedan", "Suv"};
+string[] Hatch = {"Gol", "Polo", "Fox"};
+string[] Sedan = {"Voyage", "Virtus", "Jetta"};
+string[] SUV = {"Nivus", "T-Cross", "Tiguan"};
+
+// Declara arrays com as informações de preços, consumo e motor dos carros
+string[] infoHatch = {
+    "Preco: R$72000,00 \nConsumo médio: Cidade: 9km/l Estrada: 13km/l \nMotor: 1.0: 75 cv", 
+    "Preco: R$95000,00\nConsumo médio: Cidade: 12km/l Estrada: 15km/l \nMotor: 1.0 TSI: 128 cv",
+    "Preco: R$68000,00 \nConsumo médio: Cidade: 9km/l Estrada: 13km/l \nMotor: 1.6: 104 cv"
+};
+
+string[] infoSedan = {
+    "Preco: R$76000,00 \nConsumo médio: Cidade: 11km/l Estrada: 15km/l \nMotor: 1.6: 104 cv", 
+    "Preco: R$105000,00\nConsumo médio: Cidade: 12km/l Estrada: 16km/l \nMotor: 1.0 TSI: 128 cv",
+    "Preco: R$125000,00 \nConsumo médio: Cidade: 10km/l Estrada: 14km/l \nMotor: 2.0: 211 cv"
+};
+
+string[] infoSUV = {
+    "Preco: R$110000,00 \nConsumo médio: Cidade: 10km/l Estrada: 14km/l \nMotor: 1.4 TSI: 150 cv", 
+    "Preco: R$115000,00\nConsumo médio: Cidade: 11km/l Estrada: 15km/l \nMotor: 1.4 TSI: 150 cv",
+    "Preco: R$130000,00 \nConsumo médio: Cidade: 9km/l Estrada: 13km/l \nMotor: 2.0 TSI: 220 cv"
+};
+
+int resposta; // Variável para armazenar a escolha do usuário para continuar ou sair
+
+// Loop para permitir várias consultas
+do {
+    // Solicita ao usuário escolher um tipo de carro
+    Console.WriteLine("Escolha o tipo de carro: ");
+    Console.WriteLine("1- " + tipoCarro[0]);
+    Console.WriteLine("2- " + tipoCarro[1]);
+    Console.WriteLine("3- " + tipoCarro[2]);
+
+    // Lê a escolha do tipo de carro e converte para inteiro
+    int tipos = int.Parse(Console.ReadLine());
+    int carroSelec; // Variável para armazenar a escolha do carro dentro do tipo selecionado
+
+    // Verifica se o número escolhido para o tipo de carro é válido
+    if (tipos > 3) 
+    {
+        Console.WriteLine("\nNúmero inválido");  
+    }
+
+    // Dependendo da escolha do tipo de carro, entra em um dos casos
+    switch(tipos) 
+    {
+        // Caso o usuário tenha escolhido o tipo "Hatch"
+        case 1:
+            Console.WriteLine("Escolha uma dos carros: ");
+            Console.WriteLine("1- " + Hatch[0]);
+            Console.WriteLine("2- " + Hatch[1]);
+            Console.WriteLine("3- " + Hatch[2]);
+            
+            // Lê a escolha do carro e converte para inteiro
+            carroSelec = int.Parse(Console.ReadLine());
+            
+            // Verifica se o número escolhido para o carro é válido
+            if (carroSelec > 3) 
+            {
+                Console.WriteLine("\nNúmero inválido");  
+            }
+            
+            // Exibe as informações do carro selecionado
+            switch (carroSelec) 
+            {
+                case 1: 
+                    Console.WriteLine("Informações sobre o " + Hatch[0] + ":\n" + infoHatch[0]);
+                    break;
+                case 2: 
+                    Console.WriteLine("Informações sobre o " + Hatch[1] + ":\n" + infoHatch[1]);
+                    break;
+                case 3: 
+                    Console.WriteLine("Informações sobre o " + Hatch[2] + ":\n" + infoHatch[2]);
+                    break;
+            }
+            break;
+
+        // Caso o usuário tenha escolhido o tipo "Sedan"
+        case 2:
+            Console.WriteLine("Escolha uma dos carros: ");
+            Console.WriteLine("1- " + Sedan[0]);
+            Console.WriteLine("2- " + Sedan[1]);
+            Console.WriteLine("3- " + Sedan[2]);
+            
+            // Lê a escolha do carro e converte para inteiro
+            carroSelec = int.Parse(Console.ReadLine());
+
+            // Verifica se o número escolhido para o carro é válido
+            if (carroSelec > 3) 
+            {
+                Console.WriteLine("\nNúmero inválido");  
+            }
+
+            // Exibe as informações do carro selecionado
+            switch (carroSelec) 
+            {
+                case 1: 
+                    Console.WriteLine("Informações sobre o " + Sedan[0] + ":\n" + infoSedan[0]);
+                    break;
+                case 2: 
+                    Console.WriteLine("Informações sobre o " + Sedan[1] + ":\n" + infoSedan[1]);
+                    break;
+                case 3: 
+                    Console.WriteLine("Informações sobre o " + Sedan[2] + ":\n" + infoSedan[2]);
+                    break;
+            }
+            break;
+
+        // Caso o usuário tenha escolhido o tipo "SUV"
+        case 3:
+            Console.WriteLine("Escolha uma dos carros: ");
+            Console.WriteLine("1- " + SUV[0]);
+            Console.WriteLine("2- " + SUV[1]);
+            Console.WriteLine("3- " + SUV[2]);
+            
+            // Lê a escolha do carro e converte para inteiro
+            carroSelec = int.Parse(Console.ReadLine());
+
+            // Verifica se o número escolhido para o carro é válido
+            if (carroSelec > 3) 
+            {
+                Console.WriteLine("\nNúmero inválido");  
+            }
+
+            // Exibe as informações do carro selecionado
+            switch (carroSelec) 
+            {
+                case 1: 
+                    Console.WriteLine("Informações sobre o " + SUV[0] + ":\n" + infoSUV[0]);
+                    break;
+                case 2: 
+                    Console.WriteLine("Informações sobre o " + SUV[1] + ":\n" + infoSUV[1]);
+                    break;
+                case 3: 
+                    Console.WriteLine("Informações sobre o " + SUV[2] + ":\n" + infoSUV[2]);
+                    break;
+            }
+            break;
+    }
+
+// Pergunta ao usuário se deseja realizar uma nova consulta ou encerrar
+Console.WriteLine("\nDigite 1 para uma nova consulta e 2 para encerrar a consulta");
+
+// Lê a resposta do usuário e converte para inteiro
+resposta = int.Parse(Console.ReadLine());
+
+// Continua o loop enquanto a resposta for 1 (nova consulta)
+} while (resposta == 1);
+
+// Exibe uma mensagem de despedida quando o usuário escolhe encerrar
+Console.WriteLine("---Obrigado por utilizar nossa consulta da Wolkswagen---");
+}
+}
