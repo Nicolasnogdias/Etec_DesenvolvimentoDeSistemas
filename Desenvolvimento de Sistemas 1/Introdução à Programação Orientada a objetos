@@ -5,7 +5,7 @@ class Viagem {
     public string lugar3;
 
     public void ExibirViagem() {
-        Console.WriteLine($"lugares como {lugar1}, {lugar2}, {lugar1}, são ótimos lugares para se visitar");
+        Console.WriteLine($"lugares como {lugar1}, {lugar2}, {lugar3}, são ótimos lugares para se visitar");
     }
 }
 class Saudacao {
