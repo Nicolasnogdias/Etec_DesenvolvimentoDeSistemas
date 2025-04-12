@@ -1,0 +1,39 @@
+using System;
+class Viagem {
+    public string lugar1;
+    public string lugar2;
+    public string lugar3;
+
+    public void ExibirViagem() {
+        Console.WriteLine($"lugares como {lugar1}, {lugar2}, {lugar1}, são ótimos lugares para se visitar");
+    }
+}
+class Saudacao {
+    public string nome;
+
+    public void ExibirSaudacao() {
+        Console.WriteLine($"Seja muito bem vindo {nome}! É um prazer tê-lo conosco");
+    }
+}
+  
+class Programa {
+    static void Main() {
+    Console.WriteLine("Olá, digite o seu nome: ");
+    
+    Saudacao suaSaudacao = new Saudacao();
+    suaSaudacao.nome = Console.ReadLine();
+    suaSaudacao.ExibirSaudacao();
+    
+    Console.WriteLine("Digite 3 lugares que você tem muita vontade de visitar: ");
+    
+    Viagem suaViagem = new Viagem ();
+    Console.Write("local 1: ");
+    suaViagem.lugar1 = Console.ReadLine();
+    Console.Write("local 2: ");
+    suaViagem.lugar2 = Console.ReadLine();
+    Console.Write("local 3: ");
+    suaViagem.lugar3 = Console.ReadLine();
+    
+    suaViagem.ExibirViagem();
+    }
+}
