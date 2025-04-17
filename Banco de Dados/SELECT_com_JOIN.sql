@@ -135,13 +135,46 @@ FROM autores a JOIN livros l ON a.id = l.autor_id
 GROUP BY a.nome
 HAVING total_livros > 1;
 
-SELECT l.titulo, a.nome AS Autor, a.nacionalidade AS Origem
-FROM livros l 
-JOIN autores a ON l.autor_id = a.id
-WHERE a.nacionalidade = "Britânica";
+SELECT l.titulo, 
+SUM(v.quantidade) AS total_vendas
+FROM vendas v
+JOIN livros l ON v.livro_id = l.id
+GROUP BY l.titulo
+ORDER BY total_vendas DESC;
 
-SELECT l.titulo, a.nome AS Autor, a.nacionalidade AS Origem
-FROM livros l 
+-- Selecione todos os livros onde a nacionalidade do autor Britânica (nome do livro, nome do autor e nacionalidade do autor)
+SELECT l.titulo, a.nome AS nome_Autor, a.nacionalidade AS pais_Origem
+FROM livros l
 JOIN autores a ON l.autor_id = a.id
 WHERE a.nacionalidade = "Britânica"
 ORDER BY l.preco DESC;
+-- -------------------------------------------------------------------------------------------------------------------------
+-- 1
+SELECT l.titulo, SUM(v.quantidade) AS total_vendas, v.preco_unitario
+FROM vendas v
+JOIN livros l ON v.livro_id = l.id
+GROUP BY l.titulo
+ORDER BY quantidade DESC;
+
+-- 2
+SELECT l.titulo, SUM(v.quantidade * v.preco_unitario) AS faturamento
+FROM vendas v
+JOIN livros l ON v.livro_id = l.id
+GROUP BY l.titulo
+ORDER BY faturamento DESC;
+
+-- 3
+SELECT l.titulo, SUM(v.quantidade) AS total_vendas, v.preco_unitario, v.data_venda
+FROM vendas v
+JOIN livros l ON v.livro_id = l.id
+WHERE v.data_venda BETWEEN '2023-01-01' AND '2023-12-31'
+GROUP BY l.titulo
+ORDER BY quantidade DESC;
+
+-- 4
+SELECT l.titulo, SUM(v.quantidade * v.preco_unitario) AS faturamento, v.data_venda 
+FROM vendas v
+JOIN livros l ON v.livro_id = l.id
+WHERE v.data_venda BETWEEN '2023-01-01' AND '2023-12-31'
+GROUP BY l.titulo
+ORDER BY faturamento DESC;
