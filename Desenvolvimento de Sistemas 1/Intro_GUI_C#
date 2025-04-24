@@ -1,0 +1,28 @@
+namespace Saudacao
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bnt_saudacao_Click(object sender, EventArgs e)
+        {
+            string nome = txt_nome.Text;
+            MessageBox.Show($"Olá {nome}!", "Seja bem vindo"
+            , MessageBoxButtons.OK,
+            MessageBoxIcon.Information);
+        }
+
+        private void bnt_limpar_Click(object sender, EventArgs e)
+        {
+            txt_nome.Clear();
+        }
+    }
+}
