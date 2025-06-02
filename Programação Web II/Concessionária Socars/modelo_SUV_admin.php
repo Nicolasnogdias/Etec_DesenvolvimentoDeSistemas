@@ -5,7 +5,7 @@ $sql = "SELECT mo.id, mo.nome_modelo, mo.preco, mo.motor, ma.nome_marca, mo.imag
         FROM modelo mo 
         INNER JOIN marca ma ON ma.id = mo.id_marca
         INNER JOIN categoria c ON c.id = mo.id_categoria
-        WHERE c.nome_categoria = 'SUV'";
+        WHERE c.nome_categoria = 'Sedan'";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
@@ -17,7 +17,7 @@ $modelos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html lang="pt-br">
 <body>
 
-<h1>Modelos SUV</h1>
+<h1>Modelos Sedan</h1>
 
 <?php foreach ($modelos as $modelo): ?>
     <div>
@@ -31,6 +31,9 @@ $modelos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </a><br><br>
         <a href="edit.php?id=<?php echo $modelo['id']; ?>">
             <button type="button">Editar</button>
+        </a><br><br>
+        <a href="delete.php?id=<?php echo $modelo['id']; ?>">
+            <button type="button">Deletar</button>
         </a>
     </div>
     <hr>
