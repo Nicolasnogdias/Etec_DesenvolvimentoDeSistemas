@@ -59,9 +59,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         
     if ($stmt->execute()) {
-    // Redireciona para a mesma página com o mesmo id
-    header("Location: edit.php?id=$id");
-    exit;
+    echo "<script>
+                alert('Modelo atualizado com sucesso.');
+                window.history.go(-2);
+              </script>";
+        exit;
 } else {
     echo "Erro ao atualizar o modelo.";
 }
@@ -137,5 +139,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <button type="submit">Salvar alterações</button> <br><br>
 </form>
-<button onclick = "history.go(-2)">Retornar</button>
+
 
