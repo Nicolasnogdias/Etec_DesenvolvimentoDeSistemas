@@ -45,7 +45,7 @@ if (move_uploaded_file($_FILES['imagem']['tmp_name'], $caminho_imagem)) {
     if ($stmt->execute()) {
         echo "<script>
                 alert('Modelo cadastrado com sucesso!');
-                window.location.href = 'lista_modelos.php';
+                window.location.href = 'carros_admin.php';
               </script>";
         exit;
     } else {
