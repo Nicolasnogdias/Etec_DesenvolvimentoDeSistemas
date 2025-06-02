@@ -28,10 +28,23 @@ $modelos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <p><strong>Marca:</strong> <?php echo htmlspecialchars($modelo['nome_marca']); ?></p>
         <a href="modelo_info.php?id=<?php echo $modelo['id']; ?>">
             <button type="button">Ver Mais</button>
+        </a><br><br>
+        <a href="edit.php?id=<?php echo $modelo['id']; ?>">
+            <button type="button">Editar</button>
+        </a><br><br>
+        <a href="delete.php?id=<?php echo $modelo['id']; ?>">
+            <button type="button">Deletar</button>
         </a>
     </div>
     <hr>
 <?php endforeach; ?>
-
 </body>
 </html>
+<script>
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+        // Se foi acessado via cache do histórico, força recarregar
+        window.location.reload();
+    }
+});
+</script>
