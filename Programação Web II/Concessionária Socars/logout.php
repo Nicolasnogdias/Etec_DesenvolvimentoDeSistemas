@@ -1,6 +1,4 @@
 <?php
-// comicudequemtálendo
-// asmina-aetio;
 
 session_start();
 session_unset();
