@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 ?>
 
-<form id="viado" method="POST" enctype="multipart/form-data" action="edit.php?id=<?php echo $modelo['id']; ?>">
+<form id="modelo" method="POST" enctype="multipart/form-data" action="edit.php?id=<?php echo $modelo['id']; ?>">
 
 <div style = "display: flex; align-items: center; gap: 10px;">
         <div>
