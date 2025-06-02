@@ -26,6 +26,9 @@ $modelos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </a><br><br>
         <a href="edit.php?id=<?php echo $modelo['id']; ?>">
             <button type="button">Editar</button>
+        </a><br><br>
+        <a href="delete.php?id=<?php echo $modelo['id']; ?>">
+            <button type="button">Deletar</button>
         </a>
     </div>
     <hr>
