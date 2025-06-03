@@ -17,7 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($usuario) {
         // REDIRECIONAMENTO
-        header('Location: login.php');
+        echo "<script>
+            alert('Email já cadastrado, redirecionando para o login.');
+            window.location.href = 'login.php';
+          </script>";
         exit;
     } else {
         $senha_hash = password_hash($senha_usuario, PASSWORD_DEFAULT);
@@ -37,9 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } else {
             echo "Erro!";
         }
-
     }
-    
 }
 ?>
 
