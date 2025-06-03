@@ -9,30 +9,47 @@ if (!isset($_SESSION['acesso']) || $_SESSION['acesso'] !== 'admin') {
 
 if ($_SERVER["REQUEST_METHOD"] === "POST"){
     $nome_admin = $_POST['nome_admin'];
-    $email_admin = $_POST['email_admin'];   
+    $email_admin = $_POST['email_admin'];
     $senha_admin = $_POST['senha_admin'];
     $acesso = 'admin';
 
-    $senha_cript = password_hash($senha_admin, PASSWORD_DEFAULT);
-    $sql = "INSERT INTO usuario (nome, email, senha, acesso) VALUES 
-    (:nome, :email, :senha, :acesso)";
-    $stmt = $pdo->prepare($sql);
+    $administradores = "SELECT * FROM usuario WHERE email = :email_usuario AND acesso = :acesso"; 
+    $stmt = $pdo->prepare($administradores); 
+    $stmt ->bindParam(':email_usuario', $email_admin);
+    $stmt ->bindParam(':acesso', $acesso);
+    $stmt-> execute();
 
-    $stmt-> bindParam(':nome', $nome_admin);
-    $stmt-> bindParam(':email', $email_admin);
-    $stmt-> bindParam(':senha', $senha_cript);
-    $stmt-> bindParam(':acesso', $acesso);
+    $admins = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($stmt -> execute()){
-        $_SESSION['nome'] = $nome_admin;
-        $_SESSION['email'] = $email_admin;
-        $_SESSION['acesso'] = $acesso;
-        header('Location: home.php');
+    if ($admins) {
+        // REDIRECIONAMENTO
+        echo "<script>
+            alert('Email já cadastrado, redirecionando para o login.');
+            window.location.href = 'login.php';
+          </script>";
+        exit;
+
     } else {
-        echo "Erro ao cadastrar usuário.";
-        
-    }
+        $senha_cript = password_hash($senha_admin, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO usuario (nome, email, senha, acesso) VALUES 
+        (:nome, :email, :senha, :acesso)";
+        $stmt = $pdo->prepare($sql);
 
+        $stmt-> bindParam(':nome', $nome_admin);
+        $stmt-> bindParam(':email', $email_admin);
+        $stmt-> bindParam(':senha', $senha_cript);
+        $stmt-> bindParam(':acesso', $acesso);
+
+       if ($stmt->execute()) {
+         echo "<script>
+            alert('Administrador cadastrado.');
+            window.location.href = 'home.php';
+          </script>";
+        exit;
+        } else {
+            echo "Erro ao cadastrar administrador.";
+        }
+    }
 }
 ?>
 
@@ -58,5 +75,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     </form>
 </body>
 </html>
-
-
